@@ -15,7 +15,7 @@ This tracker is based on the Nintendo DS (NDS) Pokémon games. As such, the foll
 - Pokémon Black/White
 - Pokémon Black2/White2
 
-This project is based on [https://github.com/Brian0255/NDS-Ironmon-Tracker/tree/main](https://github.com/Brian0255/NDS-Ironmon-Tracker/tree/main), which initally started from [https://github.com/besteon/Ironmon-Tracker](https://github.com/besteon/Ironmon-Tracker)
+This project is based on [https://github.com/Brian0255/NDS-Ironmon-Tracker/tree/main](https://github.com/Brian0255/NDS-Ironmon-Tracker/tree/main), which initially started from [https://github.com/besteon/Ironmon-Tracker](https://github.com/besteon/Ironmon-Tracker)
 
 ## Installation
 
