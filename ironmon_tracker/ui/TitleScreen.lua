@@ -596,7 +596,7 @@ local function TitleScreen(initialSettings, initialTracker, initialProgram)
 	end
 
 	local function initTopUI()
-		local versionText = "NDS Ironmon Tracker " .. MiscConstants.TRACKER_VERSION
+		local versionText = "NDS Nuzlocke Tracker " .. MiscConstants.TRACKER_VERSION
 		ui.frames.topFrame =
 			Frame(
 			Box(
