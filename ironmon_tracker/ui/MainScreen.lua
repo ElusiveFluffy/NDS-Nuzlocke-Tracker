@@ -796,15 +796,8 @@ local function MainScreen(initialSettings, initialTracker, initialProgram)
         ui.frames.accEvaFrame.setVisibility(showAccEva)
         ui.frames.survivalHealFrame.setVisibility(showPokecenterHeals)
         ui.frames.tourneyPointsFrame.setVisibility(showTourneyPoints)
-        local healingTotals = program.getHealingTotals()
-        local statusTotals = program.getStatusTotals()
-        if healingTotals == nil then
-            healingTotals = {healing = 0, numHeals = 0}
-        end
-        hoverListeners.statusItemsHoverListener.setOnHoverParams({items = program.getStatusItems(), itemType = "Status"})
-        hoverListeners.healingItemsHoverListener.setOnHoverParams({items = program.getHealingItems(), itemType = "Healing"})
-        ui.controls.healsLabel.setText("Heals: " .. healingTotals.healing .. "% (" .. healingTotals.numHeals .. ")")
-        ui.controls.statusItemsLabel.setText("Status items: " .. statusTotals)
+        ui.controls.healsLabel.setText("")
+        ui.controls.statusItemsLabel.setText("")
         ui.frames.enemyNoteFrame.setVisibility(isEnemy or inPastRunView)
         ui.controls.noteIcon.setVisibility(not inPastRunView)
         ui.frames.healFrame.setVisibility(not isEnemy and not inPastRunView)

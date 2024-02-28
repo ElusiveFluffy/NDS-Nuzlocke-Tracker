@@ -83,7 +83,7 @@ PlaythroughConstants.CAUSES = {
 }
 
 PlaythroughConstants.FAINT_DETECTIONS = {
-    ON_FIRST_SLOT_FAINT = 0,
+    ON_WHITEOUT = 0,
     ON_HIGHEST_LEVEL_FAINT = 1
 }
 

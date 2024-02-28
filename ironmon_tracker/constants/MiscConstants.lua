@@ -103,7 +103,7 @@ MiscConstants.DEFAULT_SETTINGS = {
         UPDATE_WAS_DONE = true
     },
     trackedInfo = {
-        FAINT_DETECTION = PlaythroughConstants.FAINT_DETECTIONS.ON_FIRST_SLOT_FAINT,
+        FAINT_DETECTION = PlaythroughConstants.FAINT_DETECTIONS.ON_WHITEOUT,
         FIRST_TIME_BW2 = true
     },
     extras = {

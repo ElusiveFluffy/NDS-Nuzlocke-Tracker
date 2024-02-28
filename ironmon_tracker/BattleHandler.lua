@@ -531,19 +531,36 @@ local function BattleHandler(
                 highestLevelMonIndex = monIndex
             end
         end
-        return highestLevelMonIndex
+        return highestLevelMonIndex - 1
+    end
+
+    local function checkIfWhiteout()
+        local party = getPlayerParty()
+        --Start on 0 so if there is no pokemon with hp then it will be a valid fainted index and the check outside this function will work
+        local monWithHPIndex = -1
+        local data
+        local currentBase = memoryAddresses.playerBattleBase
+        for monIndex, mon in pairs(party) do
+            pokemonDataReader.setCurrentBase(currentBase + (monIndex - 1) * gameInfo.ENCRYPTED_POKEMON_SIZE)
+            data = pokemonDataReader.decryptPokemonInfo(false, monIndex - 1, false)
+            if MiscUtils.validPokemonData(data) then
+                if data.curHP > 0 and data.isEgg == 0 then
+                    --return out on first pokemon with more then 0 hp since don't need to check the others then
+                    return monWithHPIndex - 1
+                end
+            end
+        end
+        return monWithHPIndex
     end
 
     function self.checkIfRunHasEnded()
         if not inBattle or not battleDataFetched then
             return
         end
-        if faintMonIndex == -1 then
-            if settings.trackedInfo.FAINT_DETECTION == PlaythroughConstants.FAINT_DETECTIONS.ON_HIGHEST_LEVEL_FAINT then
-                faintMonIndex = calculateHighestPlayerMonIndex()
-            elseif settings.trackedInfo.FAINT_DETECTION == PlaythroughConstants.FAINT_DETECTIONS.ON_FIRST_SLOT_FAINT then
-                faintMonIndex = 0
-            end
+        if settings.trackedInfo.FAINT_DETECTION == PlaythroughConstants.FAINT_DETECTIONS.ON_HIGHEST_LEVEL_FAINT and faintMonIndex == -1 then
+            faintMonIndex = calculateHighestPlayerMonIndex()
+        elseif settings.trackedInfo.FAINT_DETECTION == PlaythroughConstants.FAINT_DETECTIONS.ON_WHITEOUT then
+            faintMonIndex = checkIfWhiteout()
         end
         local currentBase = memoryAddresses.playerBattleBase
         pokemonDataReader.setCurrentBase(currentBase + faintMonIndex * gameInfo.ENCRYPTED_POKEMON_SIZE)

@@ -236,7 +236,7 @@ local function TrackedInfoScreen(initialSettings, initialTracker, initialProgram
 			)
 		)
 		local settingNames = {
-			[PlaythroughConstants.FAINT_DETECTIONS.ON_FIRST_SLOT_FAINT] = "Lead Pok" .. Chars.accentedE .. "mon faints",
+			[PlaythroughConstants.FAINT_DETECTIONS.ON_WHITEOUT] = "Whiteout",
 			[PlaythroughConstants.FAINT_DETECTIONS.ON_HIGHEST_LEVEL_FAINT] = "Highest level faints"
 		}
 		for settingValue, name in pairs(settingNames) do
