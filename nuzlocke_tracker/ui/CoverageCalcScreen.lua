@@ -132,7 +132,7 @@ local function CoverageCalcScreen(initialSettings, initialTracker, initialProgra
         local items = pokemonScroller.getViewedItems()
         for index = 1, 10, 1 do
             local row = pokemonListRows[index]
-            local pathPrefix = "ironmon_tracker/images/types/"
+            local pathPrefix = "nuzlocke_tracker/images/types/"
             local name = ""
             local type1Path = ""
             local type2Path = ""
@@ -205,7 +205,7 @@ local function CoverageCalcScreen(initialSettings, initialTracker, initialProgra
         end
         moveSelector.backdrop.setVisibility(not on)
         moveSelector.imageDarkener.setVisibility(not on)
-        moveSelector.image.setPath("ironmon_tracker/images/types/" .. moveType .. pathEnding)
+        moveSelector.image.setPath("nuzlocke_tracker/images/types/" .. moveType .. pathEnding)
         moveSelector.image.setBackgroundFillColorKey(borderColorKey)
         if calculateNewCoverage then
             calculateCurrentEffectiveness()
@@ -236,7 +236,7 @@ local function CoverageCalcScreen(initialSettings, initialTracker, initialProgra
             moveSelectors[index].image =
                 ImageLabel(
                 Component(frame, Box({x = 0, y = 0}, {width = 31, height = 13})),
-                ImageField("ironmon_tracker/images/types/" .. moveType .. "_empty.png", {x = 1, y = 1}, nil)
+                ImageField("nuzlocke_tracker/images/types/" .. moveType .. "_empty.png", {x = 1, y = 1}, nil)
             )
 
             moveSelectors[index].imageDarkener =

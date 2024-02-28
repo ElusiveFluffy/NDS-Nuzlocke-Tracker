@@ -100,7 +100,7 @@ local function SearchScreen(initialSettings, initialTracker, initialProgram, ini
         frameInfo.imageLabel.setOffset({x = 0, y = 0})
         local folderName = program.getGameInfo().BADGE_PREFIX
         frameInfo.imageLabel.setPath(
-            "ironmon_tracker/images/trainers/" .. folderName .. "/small/" .. trainerInfo.imageName .. ".png"
+            "nuzlocke_tracker/images/trainers/" .. folderName .. "/small/" .. trainerInfo.imageName .. ".png"
         )
         frameInfo.label1.setText(trainerInfo.battleName)
         frameInfo.label2.setText(#rowInfo.foundPokemon .. " Pok" .. Chars.accentedE .. "mon")
@@ -317,7 +317,7 @@ local function SearchScreen(initialSettings, initialTracker, initialProgram, ini
         local imageLabel =
             ImageLabel(
             Component(frame, Box({x = 0, y = 0}, {width = 30, height = 28}, nil, nil)),
-            ImageField("ironmon_tracker/images/trainers/bw/caitlin_vs.png", {x = 0, y = -5}, nil)
+            ImageField("nuzlocke_tracker/images/trainers/bw/caitlin_vs.png", {x = 0, y = -5}, nil)
         )
 
         local labelFrame =

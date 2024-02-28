@@ -1,4 +1,4 @@
-local function TrainerGroupOverviewScreen(initialSettings, initialTracker, initialProgram, initialLogViewerScreen)
+local function RivalOverviewScreen(initialSettings, initialTracker, initialProgram, initialLogViewerScreen)
     local Frame = dofile(Paths.FOLDERS.UI_BASE_CLASSES .. "/Frame.lua")
     local Box = dofile(Paths.FOLDERS.UI_BASE_CLASSES .. "/Box.lua")
     local Component = dofile(Paths.FOLDERS.UI_BASE_CLASSES .. "/Component.lua")
@@ -23,15 +23,14 @@ local function TrainerGroupOverviewScreen(initialSettings, initialTracker, initi
         RIVAL_OVERVIEW_HEIGHT = 143,
         RIVAL_FRAME_HEIGHT = 64,
         CARD_FRAME_OFFSET = 5,
-        CARD_WIDTH = 56,
-        CARD_HEIGHT = 65,
+        CARD_WIDTH = 76,
+        CARD_HEIGHT = 32,
         CARD_LOCATION_HEIGHT = 22,
         CARD_SPACING = 4
     }
     local ui = {}
     local eventListeners = {}
     local self = {}
-
     local function onGoBackClick()
     end
 
@@ -41,7 +40,43 @@ local function TrainerGroupOverviewScreen(initialSettings, initialTracker, initi
         starterNumber = logInfo.getStarterNumber()
     end
 
-    local function createTrainerCard(battle, rowFrame)
+    local function createPokeballsForCard(cardFrame, teamSize)
+        local pokeballFrame =
+            Frame(
+            Box(
+                {
+                    x = 0,
+                    y = 0
+                },
+                {
+                    width = 0,
+                    height = 0
+                },
+                nil,
+                nil
+            ),
+            Layout(Graphics.ALIGNMENT_TYPE.HORIZONTAL, 4, {x = 5, y = 0}),
+            cardFrame
+        )
+        for i = 1, 6, 1 do
+            if teamSize >= i then
+                local pokeball =
+                    ImageLabel(
+                    Component(pokeballFrame, Box({x = 0, y = 0}, {width = 8, height = 0}, nil, nil)),
+                    ImageField(Graphics.PATHS.TRAINER_IMAGES .. "/pokeball.png", {x = 0, y = 0}, nil)
+                )
+            else
+                local noPokeballIcon =
+                    Icon(
+                    Component(pokeballFrame, Box({x = 0, y = 0}, {width = 8, height = 0}, nil, nil)),
+                    "SMALL_DOT",
+                    {x = 2, y = 3}
+                )
+            end
+        end
+    end
+
+    local function createLocationCard(battle, rowFrame)
         local teamID = battle.id
         local teamSize = #trainers[teamID]
         local cardFrame =
@@ -64,12 +99,7 @@ local function TrainerGroupOverviewScreen(initialSettings, initialTracker, initi
             rowFrame
         )
         table.insert(eventListeners, MouseClickEventListener(cardFrame,logViewerScreen.openTrainerTeamFromCard, battle))
-        ui.controls[battle.name .. "Image"] =
-            ImageLabel(
-            Component(cardFrame, Box({x = 0, y = 0}, {width = 0, height = constants.CARD_HEIGHT - 19}, nil, nil)),
-            ImageField("ironmon_tracker/images/trainers/"..program.getGameInfo().BADGE_PREFIX.."/" .. battle.name .. "_vs.png", {x = 1, y = 1}, nil)
-        )
-        local badgeNameFrame =
+        local locationLabelFrame =
             Frame(
             Box(
                 {
@@ -77,47 +107,38 @@ local function TrainerGroupOverviewScreen(initialSettings, initialTracker, initi
                     y = 0
                 },
                 {
-                    width = constants.CARD_WIDTH,
-                    height = 19
+                    width = 0,
+                    height = constants.CARD_LOCATION_HEIGHT
                 },
-                "Top box background color",
-                "Top box border color"
+                nil,
+                nil
             ),
-            Layout(Graphics.ALIGNMENT_TYPE.HORIZONTAL, 0, {x = 0, y = 0}),
+            Layout(Graphics.ALIGNMENT_TYPE.HORIZONTAL, 1, {x = 0, y = 0}),
             cardFrame
         )
-        local badgePrefix = program.getGameInfo().BADGE_PREFIX
-        if trainerGroup.groupName == "Kanto Gyms" then
-            badgePrefix = badgePrefix.."_K"
-        end
-        local badgeNumber = battle.badgeNumber
-        if badgeNumber ~= nil then
-            local badge =
-                ImageLabel(
-                Component(badgeNameFrame, Box({x = 0, y = 0}, {width = 18, height = 16}, nil, nil)),
-                ImageField(
-                    "ironmon_tracker/images/icons/" .. badgePrefix .. "_badge" .. badgeNumber .. ".png",
-                    {x = 2, y = 2}
-                )
-            )
-        end
-        local name =
+        local locationIcon =
+            Icon(
+            Component(locationLabelFrame, Box({x = 0, y = 0}, {width = 7, height = 0}, nil, nil)),
+            "LOCATION_ICON_SMALL_FILLED",
+            {x = 2, y = 4}
+        )
+        local locationLabel =
             TextLabel(
             Component(
-                badgeNameFrame,
+                locationLabelFrame,
                 Box(
                     {x = 0, y = 0},
                     {
                         width = 0,
-                        height = 0
+                        height = constants.CARD_LOCATION_HEIGHT
                     },
                     nil,
                     nil
                 )
             ),
             TextField(
-                battle.name,
-                {x = 0, y = 4},
+                battle.location,
+                {x = 0, y = 2},
                 TextStyle(
                     Graphics.FONT.DEFAULT_FONT_SIZE,
                     Graphics.FONT.DEFAULT_FONT_FAMILY,
@@ -126,14 +147,10 @@ local function TrainerGroupOverviewScreen(initialSettings, initialTracker, initi
                 )
             )
         )
-        if badgeNumber == nil then
-            --center elite 4/other important trainers without a badge
-            local centerX = (constants.CARD_WIDTH - DrawingUtils.calculateWordPixelLength(battle.name) - 2) / 2
-            name.setTextOffset({x = centerX, y = 4})
-        end
+        createPokeballsForCard(cardFrame, teamSize)
     end
 
-    local function createTrainerCardRow(battleSet)
+    local function createLocationCardRow(battleSet)
         local rowFrame =
             Frame(
             Box(
@@ -149,25 +166,27 @@ local function TrainerGroupOverviewScreen(initialSettings, initialTracker, initi
                 nil
             ),
             Layout(Graphics.ALIGNMENT_TYPE.HORIZONTAL, constants.CARD_SPACING, {x = 0, y = 0}),
-            ui.frames.trainerCardFrame
+            ui.frames.locationCardFrame
         )
         for _, battle in pairs(battleSet) do
-            createTrainerCard(battle, rowFrame)
+            createLocationCard(battle, rowFrame)
         end
     end
 
-    local function createTrainerCardFrames()
+    local function createLocationCardFrames()
         local battles = trainerGroup.battles
-        local battleSets = MiscUtils.splitTableByNumber(battles, 4)
+        local battleSets = MiscUtils.splitTableByNumber(battles, 3)
         for _, battleSet in pairs(battleSets) do
-            createTrainerCardRow(battleSet)
+            createLocationCardRow(battleSet)
         end
     end
 
     function self.setTrainerGroup(newTrainerGroup)
         trainerGroup = newTrainerGroup
-        ui.frames.trainerCardFrame.clearAllChildren()
-        createTrainerCardFrames()
+        local rivalName = trainerGroup.groupName
+        ui.controls.rivalImage.setPath(Graphics.PATHS.TRAINER_IMAGES .. "/"..program.getGameInfo().BADGE_PREFIX.."/" .. rivalName .. "_rival.png")
+        ui.frames.locationCardFrame.clearAllChildren()
+        createLocationCardFrames()
     end
 
     local function initUI()
@@ -190,8 +209,14 @@ local function TrainerGroupOverviewScreen(initialSettings, initialTracker, initi
             Layout(Graphics.ALIGNMENT_TYPE.VERTICAL, 0, {x = 0, y = 0}),
             nil
         )
+        --Exceedingly rare instance where I am not using a rigid layout. Don't feel like the rival image fits it, however.
+        ui.controls.rivalImage =
+            ImageLabel(
+            Component(ui.frames.mainFrame, Box({x = 0, y = 0}, {width = 0, height = 0}, nil, nil)),
+            ImageField("nuzlocke_tracker/images/trainers/cheren_vs.png", {x = 120, y = 75}, nil)
+        )
 
-        ui.frames.trainerCardFrame =
+        ui.frames.locationCardFrame =
             Frame(
             Box(
                 {
@@ -225,4 +250,4 @@ local function TrainerGroupOverviewScreen(initialSettings, initialTracker, initi
     return self
 end
 
-return TrainerGroupOverviewScreen
+return RivalOverviewScreen

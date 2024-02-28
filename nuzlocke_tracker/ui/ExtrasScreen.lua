@@ -193,7 +193,7 @@ local function ExtrasScreen(initialSettings, initialTracker, initialProgram)
 		)
 		local iconPath =
 			Paths.CURRENT_DIRECTORY ..
-			Paths.SLASH .. "ironmon_tracker" .. Paths.SLASH .. "images" .. Paths.SLASH .. "icons" .. Paths.SLASH .. extra.iconImage
+			Paths.SLASH .. "nuzlocke_tracker" .. Paths.SLASH .. "images" .. Paths.SLASH .. "icons" .. Paths.SLASH .. extra.iconImage
 		local icon =
 			ImageLabel(
 			Component(iconNameFrame, Box({x = 0, y = 0}, {width = 15, height = 14})),

@@ -3,7 +3,7 @@ local function Main()
 
 	local newerBizhawk = true
 
-	dofile("ironmon_tracker/constants/Chars.lua")
+	dofile("nuzlocke_tracker/constants/Chars.lua")
 
 	local version = client.getversion()
 	--basically checking if older than 2.9
@@ -12,12 +12,12 @@ local function Main()
 		Chars.accentedE = "\233"
 	end
 
-	dofile("ironmon_tracker/utils/FormsUtils.lua")
-	dofile("ironmon_tracker/utils/MiscUtils.lua")
-	dofile("ironmon_tracker/constants/PlaythroughConstants.lua")
-	dofile("ironmon_tracker/constants/MiscConstants.lua")
+	dofile("nuzlocke_tracker/utils/FormsUtils.lua")
+	dofile("nuzlocke_tracker/utils/MiscUtils.lua")
+	dofile("nuzlocke_tracker/constants/PlaythroughConstants.lua")
+	dofile("nuzlocke_tracker/constants/MiscConstants.lua")
 
-	dofile("ironmon_tracker/constants/Paths.lua")
+	dofile("nuzlocke_tracker/constants/Paths.lua")
 	dofile(Paths.FOLDERS.DATA_FOLDER .. "/Pickle.lua")
 	dofile(Paths.FOLDERS.DATA_FOLDER .. "/QuickLoader.lua")
 	dofile(Paths.FOLDERS.CONSTANTS_FOLDER .. "/MiscData.lua")

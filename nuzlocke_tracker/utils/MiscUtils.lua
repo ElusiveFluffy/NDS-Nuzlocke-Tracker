@@ -183,7 +183,7 @@ function MiscUtils.runExecuteCommand(command, errorOutput)
         prependDir = Paths.CURRENT_DIRECTORY .. "/"
     end
 
-    local tempFile = prependDir .. "ironmon_tracker/commandResult.txt"
+    local tempFile = prependDir .. "nuzlocke_tracker/commandResult.txt"
     local completeCommand = string.format('%s 1>"%s"', command, tempFile)
     if errorOutput then
         completeCommand = string.format('%s 2>"%s"', completeCommand, errorOutput)

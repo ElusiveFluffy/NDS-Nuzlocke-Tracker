@@ -462,7 +462,7 @@ local function TrackerSetupScreen(initialSettings, initialTracker, initialProgra
             end
         end
         FormsUtils.createSaveForm(
-            Paths.CURRENT_DIRECTORY .. "/ironmon_tracker/quickloadProfiles",
+            Paths.CURRENT_DIRECTORY .. "/nuzlocke_tracker/quickloadProfiles",
             "profile",
             ".qlp",
             saveProfile
@@ -476,7 +476,7 @@ local function TrackerSetupScreen(initialSettings, initialTracker, initialProgra
         local profile =
             forms.openfile(
             "*.qlp",
-            Paths.CURRENT_DIRECTORY .. Paths.SLASH .. "ironmon_tracker" .. Paths.SLASH .. "quickloadProfiles" .. Paths.SLASH
+            Paths.CURRENT_DIRECTORY .. Paths.SLASH .. "nuzlocke_tracker" .. Paths.SLASH .. "quickloadProfiles" .. Paths.SLASH
         )
         client.SetSoundOn(soundOn)
         if profile == "" then
@@ -592,7 +592,7 @@ local function TrackerSetupScreen(initialSettings, initialTracker, initialProgra
                 settingKey = "SETTINGS_PATH",
                 labelName = "Settings file",
                 extension = ".rnqs",
-                relativePath = Paths.SLASH .. "ironmon_tracker" .. Paths.SLASH .. "settings"
+                relativePath = Paths.SLASH .. "nuzlocke_tracker" .. Paths.SLASH .. "settings"
             }
         }
         for _, settingData in pairs(settingsData) do

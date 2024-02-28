@@ -528,7 +528,7 @@ local function TitleScreen(initialSettings, initialTracker, initialProgram)
 			ui.favoriteImages[i] =
 				ImageLabel(
 				Component(ui.frames.favoritesFrame, Box({x = 0, y = 0}, {width = 30, height = 28})),
-				ImageField("ironmon_tracker/images/pokemonIconSets/stadiumset/" .. i .. ".png", {x = 0, y = 0}, nil)
+				ImageField("nuzlocke_tracker/images/pokemonIconSets/stadiumset/" .. i .. ".png", {x = 0, y = 0}, nil)
 			)
 			table.insert(favoritePictureListeners, MouseClickEventListener(ui.favoriteImages[i], toggleFavoriteEditing, true))
 		end

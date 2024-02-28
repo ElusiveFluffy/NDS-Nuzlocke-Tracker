@@ -52,7 +52,7 @@ local function TeamInfoScreen(initialSettings, initialTracker, initialProgram, i
 
     local function readCurrentTeamIndexIntoUI()
         program.changeMainScreenForTeamInfoView(currentTrainerTeam[currentTeamIndex], pokemonLoadingFunction)
-        ui.controls.pokeballs[currentTeamIndex].setPath("ironmon_tracker/images/trainers/pokeball_large.png")
+        ui.controls.pokeballs[currentTeamIndex].setPath("nuzlocke_tracker/images/trainers/pokeball_large.png")
         program.drawCurrentScreens()
     end
 
@@ -67,13 +67,13 @@ local function TeamInfoScreen(initialSettings, initialTracker, initialProgram, i
     end
 
     local function onBackwardPokemonClick()
-        ui.controls.pokeballs[currentTeamIndex].setPath("ironmon_tracker/images/trainers/pokeball_large_off.png")
+        ui.controls.pokeballs[currentTeamIndex].setPath("nuzlocke_tracker/images/trainers/pokeball_large_off.png")
         currentTeamIndex = MiscUtils.decreaseTableIndex(currentTeamIndex, #currentTrainerTeam)
         readCurrentTeamIndexIntoUI()
     end
 
     local function onForwardPokemonClick()
-        ui.controls.pokeballs[currentTeamIndex].setPath("ironmon_tracker/images/trainers/pokeball_large_off.png")
+        ui.controls.pokeballs[currentTeamIndex].setPath("nuzlocke_tracker/images/trainers/pokeball_large_off.png")
         currentTeamIndex = MiscUtils.increaseTableIndex(currentTeamIndex, #currentTrainerTeam)
         readCurrentTeamIndexIntoUI()
     end
@@ -110,7 +110,7 @@ local function TeamInfoScreen(initialSettings, initialTracker, initialProgram, i
     end
 
     local function onPokeballClick(index)
-        ui.controls.pokeballs[currentTeamIndex].setPath("ironmon_tracker/images/trainers/pokeball_large_off.png")
+        ui.controls.pokeballs[currentTeamIndex].setPath("nuzlocke_tracker/images/trainers/pokeball_large_off.png")
         currentTeamIndex = index
         readCurrentTeamIndexIntoUI()
     end
@@ -126,7 +126,7 @@ local function TeamInfoScreen(initialSettings, initialTracker, initialProgram, i
                     ui.frames.pokeballFrame,
                     Box({x = 0, y = 0}, {width = constants.POKEBALL_SIZE, height = constants.POKEBALL_SIZE}, nil, nil)
                 ),
-                ImageField("ironmon_tracker/images/trainers/pokeball_large_off.png", {x = 1, y = 1}, nil)
+                ImageField("nuzlocke_tracker/images/trainers/pokeball_large_off.png", {x = 1, y = 1}, nil)
             )
             eventListeners["pokeball"..i] = MouseClickEventListener(ui.controls.pokeballs[i],onPokeballClick, i)
         end
@@ -170,7 +170,7 @@ local function TeamInfoScreen(initialSettings, initialTracker, initialProgram, i
                     nil
                 )
             ),
-            ImageField("ironmon_tracker/images/trainers/" .. "shauntal" .. "_team.png", {x = 1, y = 1}, nil)
+            ImageField("nuzlocke_tracker/images/trainers/" .. "shauntal" .. "_team.png", {x = 1, y = 1}, nil)
         )
         ui.frames.arrowNameFrame =
             Frame(
@@ -321,7 +321,7 @@ local function TeamInfoScreen(initialSettings, initialTracker, initialProgram, i
         local centerX = (44 - length) / 2
         ui.controls.battlerNameLabel.setTextOffset({x = centerX, y = 2})
         local prefix = program.getGameInfo().BADGE_PREFIX
-        ui.controls.battlerImage.setPath("ironmon_tracker/images/trainers/"..prefix.."/" .. currentTrainer.name .. "_team.png")
+        ui.controls.battlerImage.setPath("nuzlocke_tracker/images/trainers/"..prefix.."/" .. currentTrainer.name .. "_team.png")
         for _, pokemon in pairs(currentTrainerTeam) do
             formatPokemon(pokemon)
         end

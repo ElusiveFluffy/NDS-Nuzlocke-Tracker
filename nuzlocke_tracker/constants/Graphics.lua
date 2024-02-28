@@ -174,7 +174,7 @@ Graphics.THEME_COLORS = {
     LIGHT_NEGATIVE = 0xFFFDCDCD
 }
 Graphics.PATHS = {
-    TRAINER_IMAGES = "ironmon_tracker/images/trainers/"
+    TRAINER_IMAGES = "nuzlocke_tracker/images/trainers/"
 }
 Graphics.MAIN_SCREEN_CONSTANTS = {
     STAT_PREDICTION_STATES = {

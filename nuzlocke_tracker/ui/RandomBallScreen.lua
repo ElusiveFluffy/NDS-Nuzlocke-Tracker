@@ -31,7 +31,7 @@ local function RandomBallScreen(initialSettings, initialTracker, initialProgram)
 		if program.getGameInfo().VERSION_GROUP == 3 then
 			icon = HGSSImageIcons[randomBall]
 		end
-		ui.controls.pokeballs[randomBall].setPath("ironmon_tracker/images/icons/" .. icon)
+		ui.controls.pokeballs[randomBall].setPath("nuzlocke_tracker/images/icons/" .. icon)
 		local text = "Random ball: " .. labels[randomBall]
 		local centerX = (94 - DrawingUtils.calculateWordPixelLength(text)) / 2
 		ui.controls.ballLabel.setText(text)
@@ -86,7 +86,7 @@ local function RandomBallScreen(initialSettings, initialTracker, initialProgram)
 					ui.frames.pokeballFrame,
 					Box({x = 0, y = 0}, {width = constants.POKEBALL_SIZE, height = constants.POKEBALL_SIZE}, nil, nil)
 				),
-				ImageField("ironmon_tracker/images/trainers/pokeball_large_off.png", {x = 1, y = offset}, nil)
+				ImageField("nuzlocke_tracker/images/trainers/pokeball_large_off.png", {x = 1, y = offset}, nil)
 			)
 		end
 	end

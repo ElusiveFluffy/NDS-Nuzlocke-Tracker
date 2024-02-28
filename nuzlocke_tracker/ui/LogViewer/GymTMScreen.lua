@@ -210,7 +210,7 @@ local function GymTMScreen(initialSettings, initialTracker, initialProgram, init
                 local moveName = moveData.name
                 local badgeNumber = index
                 local prefix = program.getGameInfo().BADGE_PREFIX
-                local badgePath = "ironmon_tracker/images/icons/" .. prefix .. "_"
+                local badgePath = "nuzlocke_tracker/images/icons/" .. prefix .. "_"
                 --funky HG/SS stuff
                 if index > 9 then
                     badgeNumber = index - 9

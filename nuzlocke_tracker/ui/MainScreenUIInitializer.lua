@@ -529,7 +529,7 @@ local function MainScreenUIInitializer(ui, gameInfo)
                 ui.frames.pokemonImageTypeFrame,
                 Box({x = 0, y = 0}, {width = 30, height = 28}, nil, nil, nil, nil, nil, 1)
             ),
-            ImageField("ironmon_tracker/images/pokemonIcons/1.png", {x = 0, y = -5}, nil)
+            ImageField("nuzlocke_tracker/images/pokemonIcons/1.png", {x = 0, y = -5}, nil)
         )
         ui.controls.pokemonType1 =
             ImageLabel(
@@ -974,7 +974,7 @@ local function MainScreenUIInitializer(ui, gameInfo)
             local badgeControl =
                 ImageLabel(
                 Component(ui.frames.badgeFrame1, Box({x = 0, y = 0}, {width = 16.3, height = 16}, nil, nil)),
-                ImageField("ironmon_tracker/images/icons/" .. prefix .. "_badge" .. i .. "_OFF.png", {x = -1, y = 0})
+                ImageField("nuzlocke_tracker/images/icons/" .. prefix .. "_badge" .. i .. "_OFF.png", {x = -1, y = 0})
             )
             table.insert(ui.badgeControlsSet1, badgeControl)
         end
@@ -983,7 +983,7 @@ local function MainScreenUIInitializer(ui, gameInfo)
                 local badgeControl =
                     ImageLabel(
                     Component(ui.frames.badgeFrame2, Box({x = 0, y = 0}, {width = 16.3, height = 16}, nil, nil)),
-                    ImageField("ironmon_tracker/images/icons/HGSS_K_badge" .. i .. "_OFF.png", {x = -1, y = 0})
+                    ImageField("nuzlocke_tracker/images/icons/HGSS_K_badge" .. i .. "_OFF.png", {x = -1, y = 0})
                 )
                 table.insert(ui.badgeControlsSet2, badgeControl)
             end
@@ -1050,7 +1050,7 @@ local function MainScreenUIInitializer(ui, gameInfo)
         ui.controls.survivalHealsIcon =
             ImageLabel(
             Component(ui.frames.survivalHealFrame, Box({x = 0, y = 0}, {width = 8, height = 10}, nil, nil)),
-            ImageField("ironmon_tracker/images/icons/heart.png", {x = 4, y = 1}, nil)
+            ImageField("nuzlocke_tracker/images/icons/heart.png", {x = 4, y = 1}, nil)
         )
         ui.frames.survivalHealAmountFrame =
             Frame(

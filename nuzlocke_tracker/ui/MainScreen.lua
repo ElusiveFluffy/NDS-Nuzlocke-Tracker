@@ -402,7 +402,7 @@ local function MainScreen(initialSettings, initialTracker, initialProgram)
                 return ""
             end
         end
-        local statusPath = "ironmon_tracker/images/status/" .. imgName .. ".png"
+        local statusPath = "nuzlocke_tracker/images/status/" .. imgName .. ".png"
         return statusPath
     end
 
@@ -1244,7 +1244,7 @@ local function MainScreen(initialSettings, initialTracker, initialProgram)
                 if badgeSet.badges == newBadges.secondSet then
                     prefix = prefix .. "_K"
                 end
-                control.setPath("ironmon_tracker/images/icons/" .. prefix .. "_badge" .. badgeIndex .. off .. ".png")
+                control.setPath("nuzlocke_tracker/images/icons/" .. prefix .. "_badge" .. badgeIndex .. off .. ".png")
             end
         end
     end

@@ -71,7 +71,7 @@ local function fillTypeDefenseFrame(heading, defenseTable, typeDefenseFrame)
                     )
                 ),
                 ImageField(
-                    "ironmon_tracker/images/types/" .. PokemonData.POKEMON_TYPES[defenseTable[currentTypeIndex]] .. ".png",
+                    "nuzlocke_tracker/images/types/" .. PokemonData.POKEMON_TYPES[defenseTable[currentTypeIndex]] .. ".png",
                     {x = 1, y = 1},
                     {width = 30, height = 12}
                 )
@@ -525,7 +525,7 @@ local function buildTopInfoFrame(BGColorKey, BGColorFillKey, move, parentFrame)
     local typeLabel =
         ImageLabel(
         Component(categoryTypeFrame, Box({x = 0, y = 0}, {width = 31, height = 13}, nil, "Top box border color")),
-        ImageField("ironmon_tracker/images/types/" .. moveType .. ".png", {x = 1, y = 1}, {width = 30, height = 12})
+        ImageField("nuzlocke_tracker/images/types/" .. moveType .. ".png", {x = 1, y = 1}, {width = 30, height = 12})
     )
     local PPLabel =
         TextLabel(
