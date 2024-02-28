@@ -1,4 +1,4 @@
-# NDS-Ironmon-Tracker
+# NDS-Nuzlocke-Tracker
 
 
 https://user-images.githubusercontent.com/61294586/173255404-ecd702ad-b23d-4b1c-a6ce-b98c09270c9d.mp4
@@ -6,9 +6,6 @@ https://user-images.githubusercontent.com/61294586/173255404-ecd702ad-b23d-4b1c-
 
 
 This tracker is a lua script that runs with [BizHawk](https://tasvideos.org/BizHawk/ReleaseHistory). It's made primarily for the ironMON challenge(created by Iateyourpie) and is used to track Pokémon data dynamically.
-
-- For more information on this challenge, head on over to [ironmon.gg](http://ironmon.gg)
-- Come join the amazing Discord! https://discord.gg/jFPYsZAhjX
 
 This tracker is based on the Nintendo DS (NDS) Pokémon games. As such, the following games are currently supported:
 
@@ -18,17 +15,17 @@ This tracker is based on the Nintendo DS (NDS) Pokémon games. As such, the foll
 - Pokémon Black/White
 - Pokémon Black2/White2
 
-This project initially started from https://github.com/besteon/Ironmon-Tracker, so I cannot thank them and all of the project's contributors enough for all the amazing groundwork they did. Also, huge shoutouts to the people over at projectpokemon.org for all their technical documentation on Pokémon data.
+This project is based on [https://github.com/Brian0255/NDS-Ironmon-Tracker/tree/main](https://github.com/Brian0255/NDS-Ironmon-Tracker/tree/main), which initally started from [https://github.com/besteon/Ironmon-Tracker](https://github.com/besteon/Ironmon-Tracker)
 
 ## Installation
 
 1. If you don't have BizHawk, [download the emulator](https://tasvideos.org/BizHawk/ReleaseHistory) (v2.8 or higher).
    - **IMPORTANT**: **Run BizHawk once and close it.**  This creates a config file in BizHawk's folder that ensures the tracker will work correctly. If you don't do 			this, errors may occur.
-2. Download this tracker from the [releases](https://github.com/Brian0255/NDS-Ironmon-Tracker/releases/) section.
-3. Unzip the tracker's files to a location of your choosing. One good location is the `Lua` folder where you installed BizHawk. Make sure the "ironmon_tracker" folder is in the same directory as "Ironmon_Tracker.lua".
+2. Download this tracker from the [releases](https://github.com/ElusiveFluffy/NDS-Nuzlocke-Tracker/releases/) section.
+3. Unzip the tracker's files to a location of your choosing. One good location is the `Lua` folder where you installed BizHawk. Make sure the "nuzlocke_tracker" folder is in the same directory as "nuzlocke_Tracker.lua".
 4. Load your ROM into [BizHawk](https://tasvideos.org/BizHawk/ReleaseHistory).
-5. Open the Lua Console (Tools -> Lua Console). Click on the folder icon and open `Ironmon_Tracker.lua` in the location you extracted it to.
-   - If you installed the tracker in Bizhawk's `Lua` folder, this location is shown by default and you should see the `Ironmon_Tracker.lua` file right away.
+5. Open the Lua Console (Tools -> Lua Console). Click on the folder icon and open `Nuzlocke_Tracker.lua` in the location you extracted it to.
+   - If you installed the tracker in Bizhawk's `Lua` folder, this location is shown by default and you should see the `Nuzlocke_Tracker.lua` file right away.
 
 ## Main Features
 
@@ -56,8 +53,7 @@ This project initially started from https://github.com/besteon/Ironmon-Tracker, 
 
 ## Feedback
 
-- Found a bug or the program stopped working? Did Aura Sphere have a missing category icon? Great! For stuff like this, you can open up an issue on the project [here,](https://github.com/Brian0255/NDS-Ironmon-Tracker/issues) or just DM me on Discord (OnlySpaghettiCode#1024). I am more than happy to respond to feedback and bug reports!
--  Think you have a cool idea for the tracker or just want to give feedback? I'd love to hear it! Feel free to DM me on Discord or open up an issue on the project. 
+- Found a bug or the program stopped working? Did Aura Sphere have a missing category icon? Great! For stuff like this, you can open up an issue on the project [here,](https://github.com/ElusiveFluffy/NDS-Nuzlocke-Tracker/issues). I am more than happy to respond to feedback and bug reports!
 
 ## FAQ
 
@@ -73,7 +69,7 @@ Fix: Use [Bizhawk emulator](https://tasvideos.org/BizHawk/ReleaseHistory) versio
 
 ---
 
-Error: `ironmon_tracker/ironmon_tracker.lua: attempt to index field 'field' (a nil value)`
+Error: `nuzlocke_tracker/nuzlocke_tracker.lua: attempt to index field 'field' (a nil value)`
 
 Cause: Updating to a new version of the tracker and using a savestate from an older version.
 
@@ -89,7 +85,7 @@ Fix: Rename your roms so they don't have spaces in the names.
 
 ---
 
-Error: `ironmon_tracker/ironmon_tracker.lua: attempt to index field '?' (a nil value)`
+Error: `nuzlocke_tracker/nuzlocke_tracker.lua: attempt to index field '?' (a nil value)`
 
 Cause: Usually happens when you run the tracker without opening and closing BizHawk at least once.
 
