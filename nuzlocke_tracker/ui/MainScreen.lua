@@ -1149,10 +1149,6 @@ local function MainScreen(initialSettings, initialTracker, initialProgram)
             HoverEventListener(ui.controls.moveHeaderLearnedText, onMoveHeaderHover, {pokemon = nil}, onHoverInfoEnd)
         eventListeners.optionsIconListener = MouseClickEventListener(ui.controls.gearIcon, openOptionsScreen, nil)
         eventListeners.noteIconListener = MouseClickEventListener(ui.controls.noteIcon, createNote, nil)
-        hoverListeners.healingItemsHoverListener =
-            HoverEventListener(ui.controls.healsLabel, onItemBagInfoHover, nil, onHoverInfoEnd)
-        hoverListeners.statusItemsHoverListener =
-            HoverEventListener(ui.controls.statusItemsLabel, onItemBagInfoHover, nil, onHoverInfoEnd)
         eventListeners.cycleStatListener = JoypadEventListener(settings.controls, "CYCLE_STAT", increaseCycleStatIndex)
         eventListeners.cyclePredictionListener =
             JoypadEventListener(settings.controls, "CYCLE_PREDICTION", increaseStatPrediction)
